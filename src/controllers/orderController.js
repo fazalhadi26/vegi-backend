@@ -113,13 +113,7 @@ const placeOrder = async (req, res, next) => {
         });
       }
 
-      // Check min order amount (15 QAR)
-      if (subtotal < 15) {
-        return res.status(400).json({
-          success: false,
-          message: `Minimum order requirement is 15.00 QAR. Your current subtotal is ${subtotal.toFixed(2)} QAR.`,
-        });
-      }
+
 
       // Check coupon
       let discount = 0;
@@ -250,13 +244,6 @@ const placeOrder = async (req, res, next) => {
           quantity: Number(item.quantity),
           total: lineTotal,
           image: prod.images && prod.images.length > 0 ? prod.images[0] : '',
-        });
-      }
-
-      if (subtotal < 15) {
-        return res.status(400).json({
-          success: false,
-          message: `Minimum order requirement is 15.00 QAR. Your current subtotal is ${subtotal.toFixed(2)} QAR.`,
         });
       }
 
